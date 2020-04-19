@@ -9,8 +9,14 @@
 #include "player.h"
 #include "stopwatch.h"
 
+#ifdef _DEBUG
+#define GAMES 20000
+#else
+#define GAMES 10000
+#endif
+
 int main() {
-    tournament tour{ 10, 10000 };
+    tournament tour{ 10, GAMES };
 
     ai_random_player p1;
     ai_random_player p2;

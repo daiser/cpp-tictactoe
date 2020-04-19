@@ -20,7 +20,7 @@ void tournament::hold() {
             game.add_player(p.second);
         }
 
-        size_t winner = game.play(m_board_size);
+        size_t winner = game.play();
         score.count_winner(winner);
     }
     score.print(std::cout);
