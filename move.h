@@ -31,7 +31,9 @@ public:
     size_t m_current = 0;
     moves(const size_t size);
     ~moves();
-    const move_score* get(const size_t index) const;
+    inline const move_score* get(const size_t index) const {
+        return &m_moves[index];
+    }
     inline move_score* __fastcall begin() {
         return &m_moves[m_current];
     }

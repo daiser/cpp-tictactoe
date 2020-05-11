@@ -12,7 +12,6 @@ constexpr size_t NO_PLAYER = 0;
 class rule {
 private:
     size_t m_winner{ NO_PLAYER };
-    bool set_winner(const size_t new_winner);
 public:
     bool __fastcall check_next(const size_t player_id);
     //bool __fastcall check(const size_t* line, const size_t size);
@@ -24,8 +23,12 @@ public:
         }
         return true;
     }
-    void reset();
-    size_t winner() const;
+    void reset() {
+        m_winner = NO_PLAYER; // setting to NO_PLAYER=0;
+    }
+    inline size_t winner() const {
+        return m_winner;
+    }
 };
 
 class board_base {
@@ -36,14 +39,14 @@ protected:
     ~board_base() {
         delete[] m_cells;
     }
-    size_t* __fastcall at(const size_t col, const size_t row) {
+    inline size_t* __fastcall at(const size_t col, const size_t row) {
         return &m_cells[row * m_size + col];
     }
 public:
     const size_t m_size;
     mutable moves m_moves;
     virtual bool take(const size_t col, const size_t row, const size_t player_id) = 0;
-    const size_t* __fastcall at(const size_t col, const size_t row) const {
+    inline const size_t* __fastcall at(const size_t col, const size_t row) const {
         return &m_cells[row * m_size + col];
     }
 };

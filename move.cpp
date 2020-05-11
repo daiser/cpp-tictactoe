@@ -20,9 +20,6 @@ void moves::reset(const size_t new_min_score) {
     m_current = 0;
     m_min_score = new_min_score;
 }
-const move_score* moves::get(const size_t index) const {
-    return &m_moves[index];
-}
 void __fastcall moves::commit() {
     move_score* current = &m_moves[m_current];
     if (current->m_score > m_min_score) return;

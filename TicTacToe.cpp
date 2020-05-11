@@ -10,9 +10,9 @@
 #include "stopwatch.h"
 
 #ifdef _DEBUG
-#define GAMES 20000
+constexpr auto GAMES = 30000;
 #else
-#define GAMES 10000
+constexpr auto GAMES = 10000;
 #endif
 
 int main() {
